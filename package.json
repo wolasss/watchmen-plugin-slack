@@ -1,20 +1,19 @@
 {
-  "name": "watchmen-plugin-slack",
-  "version": "0.1.0",
+  "name": "watchmen-plugin-slack-debounced",
+  "version": "1.0.0",
   "description": "Notifications via Slack for watchmen",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/wiseNhammer/watchmen-plugin-slack.git"
+    "url": "https://github.com/wolasss/watchmen-plugin-slack.git"
   },
   "author": {
-    "name": "Emily Horsman",
-    "email": "me@emilyhorsman.com",
-    "url": "http://emilyhorsman.com"
+    "name": "Adam Wolski",
+    "email": "contact@adamwolski.com",
+    "url": "http://adamwolski.com.com"
   },
   "dependencies": {
-    "dotenv": "^1.2.0",
-    "merge": "^1.2.0",
+    "moment": "^2.24.0",
     "node-slack": "0.0.7"
   }
 }
