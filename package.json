@@ -1,6 +1,6 @@
 {
   "name": "watchmen-plugin-slack-debounced",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Notifications via Slack for watchmen",
   "main": "index.js",
   "repository": {

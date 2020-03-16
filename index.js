@@ -98,11 +98,11 @@ const colors = {
 }
 
 const notificationText = {
-    'new-outage': (service, data) => `:server: ${service.name} (${service.url}) - ${moment(data.timestamp).fromNow()}`,
+    'new-outage': (service, data) => `:server: *[${service.group}]* ${service.name} (${service.url}) - ${moment(data.timestamp).fromNow()}`,
     'service-back': (service, lastOutage = {}) => {
         const duration = moment.duration(Date.now() - lastOutage.timestamp);
 
-        return `:server: ${service.name} (Down for ${duration.humanize()})`}
+        return `:server: *[${service.group}]* ${service.name} (Down for ${duration.humanize()})`}
 }
 
 function sendSlackNotification(event, services) {
@@ -124,17 +124,6 @@ function sendSlackNotification(event, services) {
         }
     }));
 
-    const statsBlock = [];
-
-    if(Object.keys(currentOutages).length && event === 'service-back') {
-        statsBlock.push({
-            "type": "section",
-            "text": {
-                "type": "mrkdwn",
-                "text": Object.keys(currentOutages).length > 1 ? `Currently there are still ${Object.keys(currentOutages).length} outages.` : `Currently there is still ${Object.keys(currentOutages).length} outage.`
-            }})
-    }
-
     const blocks = [{
         "type": "section",
         "text": {
@@ -143,7 +132,6 @@ function sendSlackNotification(event, services) {
         }
     },
     ...outagesNotifications,
-    ...statsBlock
     ];
 
     var options = {
