@@ -7,7 +7,7 @@ const moment = require('moment');
 const cache = {};
 const DEBOUNCE_TIME = process.env.WATCHMEN_SLACK_DEBOUNCE && parseInt(process.env.WATCHMEN_SLACK_DEBOUNCE, 10) || 30000; // 30s
 const SUPPORTED_EVENTS = ['latency-warning', 'new-outage', 'service-back', 'current-outage', 'service-error', 'service-ok'];
-const ENV_NOTIFICATIONS  = process.env.WATCHMEN_SLACK_NOTIFICATION_EVENTS || SUPPORTED_EVENTS;
+const ENV_NOTIFICATIONS  = process.env.WATCHMEN_SLACK_NOTIFICATION_EVENTS && process.env.WATCHMEN_SLACK_NOTIFICATION_EVENTS.split(' ') || SUPPORTED_EVENTS;
 
 const debounce = (fn, time) => {
   let timeout;
